@@ -1,12 +1,18 @@
 import CouplingDataService from "./lib/CouplingDataService";
 import UserDataService from "./lib/UserDataService";
 import * as Promise from "bluebird";
-import * as express from "express";
+// import * as express from "express";
+// import * as expressWs from "express-ws";
+
+var express = require('express');
+var app = express();
+var expressWs = require('express-ws')(app);
 
 const config = require('./../config');
 
 export function start() {
-    const app = express();
+    // const app = express();
+    // expressWs(app);
     const couplingDataService = new CouplingDataService(config.mongoUrl);
     const userDataService = new UserDataService(couplingDataService.database);
 
