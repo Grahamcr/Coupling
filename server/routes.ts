@@ -12,14 +12,14 @@ module.exports = function (wsInstance, userDataService, couplingDataService) {
     const clients = wsInstance.getWss().clients;
 
     app.ws('/api/:tribeId/pairAssignments/current', function(ws) {
-        onOpen();
+        onOpen(ws);
 
         ws.on('message', function() {
-            ws.send('There are ' + clients.size + ' connections currently.');
+            ws.send(buildMessage(ws));
         });
 
         ws.on('close', function() {
-            broadcast('Lost client connection. Total connections: ' + clients.size);
+            broadcast(ws, buildMessage(ws));
         });
 
         ws.on('error', function(error) {
@@ -27,17 +27,40 @@ module.exports = function (wsInstance, userDataService, couplingDataService) {
         });
     });
 
+    function buildMessage(ws) {
+        return 'There are currently ' + countClientsOnThisRoute(ws) + ' clients on this channel.';
+    }
+
+
+    function onOpen(ws) {
+        broadcast(ws, buildMessage(ws));
+    }
+
+    function countClientsOnThisRoute(ws) {
+        let clientCount = 0;
+        clients.forEach(client => {
+            if(isOnSameChannelAsCurrentClient(client, ws)) {
+                clientCount++;
+            }
+        });
+        return clientCount;
+    }
+
+    function broadcast(ws, message: string) {
+        clients.forEach((client) => {
+            if(isOnSameChannelAsCurrentClient(client, ws)) {
+                client.send(message)
+            }
+        });
+    }
+
+    function isOnSameChannelAsCurrentClient(client, ws) {
+        return client.upgradeReq.url === ws.upgradeReq.url;
+    }
+
     app.ws('*', function(ws) {
         ws.close();
     });
-
-    function onOpen() {
-        broadcast('New client connection. Total connections: ' + clients.size);
-    }
-
-    function broadcast(message: string) {
-        clients.forEach((ws) => ws.send(message));
-    }
 
     app.get('/welcome', routes.welcome);
     app.get('/auth/google', passport.authenticate('google'));
