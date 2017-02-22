@@ -21,6 +21,10 @@ module.exports = function (wsInstance, userDataService, couplingDataService) {
         ws.on('close', function() {
             broadcast('Lost client connection. Total connections: ' + clients.size);
         });
+
+        ws.on('error', function(error) {
+            console.log('---------------ERROR---------------\n', error);
+        });
     });
 
     function onOpen() {

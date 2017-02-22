@@ -9,20 +9,28 @@ import * as template from "./pair-assignments.pug";
 import Tribe from "../../../../common/Tribe";
 import PairAssignmentSet from "../../../../common/PairAssignmentSet";
 import Player from "../../../../common/Player";
-import * as Styles from './styles.css';
+import * as Styles from "./styles.css";
 
 export class PairAssignmentsController {
-    static $inject = ['Coupling', '$location'];
+    static $inject = ['Coupling', '$location', '$websocket'];
     tribe: Tribe;
     players: Player[];
     pairAssignments: PairAssignmentSet;
     isNew: boolean;
     styles: any;
+    messages: string[];
     private _unpairedPlayers: Player[];
     private differenceOfPlayers = differenceWith(eqBy(prop('_id')));
 
-    constructor(public Coupling, private $location) {
+    constructor(public Coupling, private $location, private $websocket) {
         this.styles = Styles;
+        this.messages = [];
+
+        const dataStream = $websocket('ws://localhost:3000/helloSocket');
+
+        dataStream.onOpen(() => this.messages.push('Connection opened'));
+        dataStream.onMessage((message) => this.messages.push(message.data));
+        dataStream.onClose(() => this.messages.push('Connection closed'));
     }
 
     get unpairedPlayers(): Player[] {
@@ -72,7 +80,7 @@ export class PairAssignmentsController {
 
 }
 
-export default module('coupling.pairAssignments', [])
+export default module('coupling.pairAssignments', ['ngWebSocket'])
     .controller('PairAssignmentsController', PairAssignmentsController)
     .directive('pairAssignments', () => {
         return {

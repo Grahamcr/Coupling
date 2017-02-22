@@ -22,3 +22,8 @@ div
         a(id="new-pairs-button" class="large pink button" href="/{{pairAssignments.tribe.id}}/prepare/") Prepare to spin!
         a(id="view-history-button" class="large blue button" href="/{{pairAssignments.tribe.id}}/history/") View history!
 player-roster(players="pairAssignments.unpairedPlayers" tribe="pairAssignments.tribe" label="'Unpaired players'")
+
+div
+    text Websocket Messages
+    ul(ng-repeat="message in pairAssignments.messages track by $index")
+        li {{message}}
