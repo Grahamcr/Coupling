@@ -12,7 +12,7 @@ import Player from "../../../../common/Player";
 import * as Styles from "./styles.css";
 
 export class PairAssignmentsController {
-    static $inject = ['Coupling', '$location', '$websocket'];
+    static $inject = ['Coupling', '$location', '$websocket', '$scope'];
     tribe: Tribe;
     players: Player[];
     pairAssignments: PairAssignmentSet;
@@ -22,7 +22,7 @@ export class PairAssignmentsController {
     private _unpairedPlayers: Player[];
     private differenceOfPlayers = differenceWith(eqBy(prop('_id')));
 
-    constructor(public Coupling, private $location, private $websocket) {
+    constructor(public Coupling, private $location, private $websocket, private $scope) {
         this.styles = Styles;
         this.messages = [];
 
@@ -31,6 +31,8 @@ export class PairAssignmentsController {
         dataStream.onOpen(() => this.messages.push('Connection opened'));
         dataStream.onMessage((message) => this.messages.push(message.data));
         dataStream.onClose(() => this.messages.push('Connection closed'));
+
+        $scope.$on('$destroy', () => dataStream.close());
     }
 
     get unpairedPlayers(): Player[] {
