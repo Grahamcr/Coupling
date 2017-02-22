@@ -6,30 +6,31 @@ import tribeListRoute from './routes/tribeListRoute'
 
 const config = require('./../config');
 
-module.exports = function (app, userDataService, couplingDataService) {
+module.exports = function (wsInstance, userDataService, couplingDataService) {
 
-    let numClients = 0;
+    const app = wsInstance.app;
+    const clients = wsInstance.getWss().clients;
 
     app.ws('/helloSocket', function(ws) {
-        ws.on('open', function open() {
-            console.log('arguments for open: ', arguments)
-            numClients++;
-            console.log('Connected clients:', numClients);
-            ws.send({ numClients: numClients });
+        onOpen();
+
+        ws.on('message', function() {
+            ws.send('There are ' + clients.size + ' connections currently.');
         });
 
-        ws.on('close', function close() {
-            console.log('arguments for close: ', arguments)
-            numClients--;
-            console.log('Connected clients:', numClients);
-            ws.send({ numClients: numClients });
+        ws.on('close', function() {
+            broadcast('Lost client connection. Total connections: ' + clients.size);
         });
-
-        ws.on('message', function message(data) {
-            console.log('Client message: ', data);
-        });
-
     });
+
+    function onOpen() {
+        broadcast('New client connection. Total connections: ' + clients.size);
+    }
+
+    function broadcast(message: string) {
+        clients.forEach((ws) => ws.send(message));
+    }
+
     app.get('/welcome', routes.welcome);
     app.get('/auth/google', passport.authenticate('google'));
     app.get('/auth/google/callback', passport.authenticate('google', {
