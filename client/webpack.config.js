@@ -14,14 +14,8 @@ const config = {
   resolve: {
     extensions: ['.webpack.js', '.web.js', '.ts', '.js', '.json']
   },
-  node: {
-    bufferutil: 'empty',
-    'utf-8-validate': 'empty'
-  },
   externals: {
     ws: {},
-    tls: {},
-    fs: {}
   },
   module: {
     loaders: [

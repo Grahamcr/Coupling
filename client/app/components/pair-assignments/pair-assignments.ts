@@ -21,18 +21,25 @@ export class PairAssignmentsController {
     messages: string[];
     private _unpairedPlayers: Player[];
     private differenceOfPlayers = differenceWith(eqBy(prop('_id')));
+    private scope;
+    private websocket;
 
     constructor(public Coupling, private $location, private $websocket, private $scope) {
         this.styles = Styles;
         this.messages = [];
+        this.scope = $scope;
+        this.websocket = $websocket;
+    }
 
-        const dataStream = $websocket('ws://localhost:3000/helloSocket');
+    $onInit() {
+        console.log(this.tribe.id)
+        const dataStream = this.websocket(`ws://localhost:3000/api/${this.tribe.id}/pairAssignments/current`);
 
         dataStream.onOpen(() => this.messages.push('Connection opened'));
         dataStream.onMessage((message) => this.messages.push(message.data));
         dataStream.onClose(() => this.messages.push('Connection closed'));
 
-        $scope.$on('$destroy', () => dataStream.close());
+        this.scope.$on('$destroy', () => dataStream.close());
     }
 
     get unpairedPlayers(): Player[] {

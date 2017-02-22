@@ -11,7 +11,7 @@ module.exports = function (wsInstance, userDataService, couplingDataService) {
     const app = wsInstance.app;
     const clients = wsInstance.getWss().clients;
 
-    app.ws('/helloSocket', function(ws) {
+    app.ws('/api/:tribeId/pairAssignments/current', function(ws) {
         onOpen();
 
         ws.on('message', function() {
@@ -25,6 +25,10 @@ module.exports = function (wsInstance, userDataService, couplingDataService) {
         ws.on('error', function(error) {
             console.log('---------------ERROR---------------\n', error);
         });
+    });
+
+    app.ws('*', function(ws) {
+        ws.close();
     });
 
     function onOpen() {

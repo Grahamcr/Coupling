@@ -4,7 +4,7 @@ import "angular-route";
 import "ng-fittext";
 import "prefixfree";
 import "angular-native-dragdrop";
-import "angular-websocket";
+import "angular-websocket/dist/angular-websocket.min.js";
 import "./filters";
 import "./animations";
 import "./components/components";
