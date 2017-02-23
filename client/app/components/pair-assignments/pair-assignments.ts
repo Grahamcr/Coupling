@@ -32,14 +32,13 @@ export class PairAssignmentsController {
     }
 
     $onInit() {
-        console.log(this.tribe.id)
-        const dataStream = this.websocket(`ws://localhost:3000/api/${this.tribe.id}/pairAssignments/current`);
+        const dataStream = this.websocket(`ws://${window.location.host}/api/${this.tribe.id}/pairAssignments/current`);
 
         dataStream.onOpen(() => this.messages.push('Connection opened'));
         dataStream.onMessage((message) => this.messages.push(message.data));
         dataStream.onClose(() => this.messages.push('Connection closed'));
 
-        this.scope.$on('$destroy', () => dataStream.close());
+        this.scope.$on('$destroy', () => dataStream.send().then(() => dataStream.close()));
     }
 
     get unpairedPlayers(): Player[] {

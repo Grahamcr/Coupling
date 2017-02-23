@@ -11,11 +11,15 @@ module.exports = function (wsInstance, userDataService, couplingDataService) {
     const app = wsInstance.app;
     const clients = wsInstance.getWss().clients;
 
+    app.all('/api/*', apiGuard(couplingDataService));
+
     app.ws('/api/:tribeId/pairAssignments/current', function(ws) {
         onOpen(ws);
 
         ws.on('message', function() {
-            ws.send(buildMessage(ws));
+            if(isOpen(ws)) {
+                ws.send(buildMessage(ws));
+            }
         });
 
         ws.on('close', function() {
@@ -27,19 +31,23 @@ module.exports = function (wsInstance, userDataService, couplingDataService) {
         });
     });
 
+    function onOpen(ws) {
+        broadcast(ws, buildMessage(ws));
+    }
+
+
     function buildMessage(ws) {
         return 'There are currently ' + countClientsOnThisRoute(ws) + ' clients on this channel.';
     }
 
-
-    function onOpen(ws) {
-        broadcast(ws, buildMessage(ws));
+    function isOpen(ws) {
+        return ws.readyState === WebSocket.OPEN;
     }
 
     function countClientsOnThisRoute(ws) {
         let clientCount = 0;
         clients.forEach(client => {
-            if(isOnSameChannelAsCurrentClient(client, ws)) {
+            if(isOpenConnectionOnSameChannel(client, ws)) {
                 clientCount++;
             }
         });
@@ -48,10 +56,14 @@ module.exports = function (wsInstance, userDataService, couplingDataService) {
 
     function broadcast(ws, message: string) {
         clients.forEach((client) => {
-            if(isOnSameChannelAsCurrentClient(client, ws)) {
+            if(isOnSameChannelAsCurrentClient(client, ws) && isOpen(client)) {
                 client.send(message)
             }
         });
+    }
+
+    function isOpenConnectionOnSameChannel(client, ws) {
+        return isOnSameChannelAsCurrentClient(client, ws) && isOpen(client);
     }
 
     function isOnSameChannelAsCurrentClient(client, ws) {
@@ -73,7 +85,6 @@ module.exports = function (wsInstance, userDataService, couplingDataService) {
     }
 
     app.get('/', routes.index);
-    app.all('/api/*', apiGuard(couplingDataService));
     app.use('/api/tribes', tribeListRoute);
     app.use('/api/:tribeId', tribeRoute);
     app.get('/app/*.html', routes.components);
