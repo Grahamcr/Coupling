@@ -33,7 +33,9 @@ export class ServerMessageController implements IController {
 
     private connectToWebsocket() {
         this.liveSocket = this.$websocket(this.buildSocketUrl());
-        this.liveSocket.onMessage(message => this.message = message.data);
+        this.liveSocket.onMessage(message => {
+            return this.message = message.data;
+        });
         this.liveSocket.onClose(this.handleSocketClose);
     }
 

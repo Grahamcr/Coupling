@@ -8,7 +8,7 @@ import * as AuthorizedTribeFetcher from "./lib/AuthorizedTribesFetcher";
 
 const config = require('./../config');
 
-module.exports = function (wsInstance, userDataService, couplingDataService) {
+module.exports = function (wsInstance, userDataService, couplingDataService, eventEmitter) {
 
     const app = wsInstance.app;
 
@@ -35,6 +35,20 @@ module.exports = function (wsInstance, userDataService, couplingDataService) {
                 if (isAuthorized) {
                     const tribeId = request.params.tribeId;
                     broadcastConnectionCountForTribe(tribeId);
+
+                    eventEmitter.addListener('newHistory', function (tribeId) {
+
+                        couplingDataService.requestHistory(tribeId)
+                            .then((history) => {
+                                wsInstance.getWss().clients.forEach(client => {
+                                    if (connectionIsOpenAndForSameTribe(client, tribeId)) {
+                                        client.send({newPairs: history[0]});
+                                    }
+                                });
+                            });
+
+                        broadcastConnectionCountForTribe(tribeId);
+                    });
 
                     connection.on('close', () => broadcastConnectionCountForTribe(tribeId));
                     connection.on('error', console.log);

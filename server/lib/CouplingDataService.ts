@@ -24,17 +24,19 @@ interface PinsAndHistory {
 export default class CouplingDataService {
 
     public database;
+    eventEmitter;
     private playersCollection;
     private historyCollection;
     private tribesCollection;
     private pinCollection;
 
-    constructor(public mongoUrl) {
+    constructor(public mongoUrl, eventEmitter) {
         this.database = monk(mongoUrl);
         this.playersCollection = this.database.get('players');
         this.historyCollection = this.database.get('history');
         this.tribesCollection = this.database.get('tribes');
         this.pinCollection = this.database.get('pins');
+        this.eventEmitter = eventEmitter;
     }
 
     requestTribes() : Promise<Tribe[]> {
@@ -74,6 +76,7 @@ export default class CouplingDataService {
 
     savePairAssignmentsToHistory(pairs, callback) {
         this.historyCollection.insert(pairs, callback);
+        this.eventEmitter.emit('newHistory', pairs.tribe);
     };
 
     savePlayer(player) {
