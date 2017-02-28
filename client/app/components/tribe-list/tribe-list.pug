@@ -5,5 +5,10 @@ div(ng-class="tribeList.styles.header")
 div(ng-class="tribeList.styles.className")
     div(ng-show="tribeList.tribes")
         tribecard(ng-repeat='tribe in tribeList.tribes' tribe="tribe")
+        
+    img(ng-class="tribeList.styles.plusBtn" ng-src="/images/plus_blue.png")
+    
+    
     div(ng-class="tribeList.styles.btnContainer")
+        
         a(ng-class="tribeList.styles.addTribeBtn" type="button" id="new-tribe-button" href="/new-tribe") Create A New Team

@@ -1,5 +1,5 @@
 :local(.className) {
-
+    margin-top: 140px;
 }
 
 :local(.header) { 
@@ -34,12 +34,24 @@
     
 }
 
+:local(.plusBtn) {
+    width: 80px;
+    display: inline-block;
+    margin-bottom: 80px;
+    position: relative;
+    left: 155px;
+}
+
+:local(.btnContainer) > a {
+    display: block;
+    color: #199ed8;
+}
 
 :local(.btnContainer) {
-    background-color: rgba(25, 158, 216, 1);
-    padding: 15px 40px;
+    
     display: inline-block;
-    margin-bottom: 30px;
-    margin-top: 150px;
+    margin-bottom: 0px;
+    margin-top: 100px;
     font-size: 24px;
+    font-weight: 900;
 }
