@@ -1,8 +1,17 @@
+div(ng-class="pairAssignments.styles.header")
+    img(ng-class="pairAssignments.styles.headerImage" ng-src="/images/logo2.png")
+    p(ng-class="pairAssignments.styles.headerText") COUPLING
+
 div(ng-class="pairAssignments.styles.className")
     div
         tribebrowser(tribe="pairAssignments.tribe")
-        div(ng-cloak class="current pair-assignments")
-            div(class="no-pairs-notice" ng-hide="pairAssignments.pairAssignments") No pair assignments yet!
+        div(ng-cloak class="current pairAssignments.styles.pair-assignments")
+        
+            div(ng-class="pairAssignments.styles.noPairsNotice" ng-hide="pairAssignments.pairAssignments") 
+                img(ng-src="/images/catcus.png")
+                p(ng-class="pairAssignments.styles.noPairsTitle") Looks a bit emtpy.... 
+                p(ng-class="pairAssignments.styles.noPairsSubtitle") Let's Couple Those Pairs!
+                
             div(ng-show="pairAssignments.pairAssignments")
                 div(class="pair-assignments-header")
                     text Couples for {{pairAssignments.pairAssignments.date | date:'MM/dd/yyyy'}} - {{pairAssignments.pairAssignments.date | date: 'HH:mm:ss'}}

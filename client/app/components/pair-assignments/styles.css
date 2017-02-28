@@ -1,13 +1,63 @@
-:local(.className) {
-    display: inline-block;
-    background: #faf0d2;
-    padding: 0 25px 25px 25px;
-    min-height: 100vh;
-    border: 12px solid #ff8c00;
-    border-top: 2px;
-    border-bottom: 2px;
-    border-radius: 82px;
+:local(.header) { 
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 60px;
+    background-color: rgba(174, 184, 0, 1);
+    text-align: left;
+    z-index: 2;
 }
+
+:local(.headerText) {  
+    color: #FFF;
+    font-weight: bold;
+    font-size: 24px;
+    margin-left: 90px;
+    margin-top: -43px;
+}
+
+:local(.headerImage) {  
+    height: 50px;
+    margin-top: 0px;
+    margin-left: 30px;
+}
+
+:local(.className) {
+    width:95%;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+    position: relative;
+    top: 70px;
+    margin-bottom: 500px;
+}
+
+
+:local(.noPairsNotice) > img {
+    width: 100px;
+}
+
+:local(.noPairsTitle) {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+:local(.noPairsSubtitle) {
+    font-size: 20px;
+    font-weight: 900;
+    margin-top: 0px;
+}
+
+:local(.pair-assignments) {
+    background:none;
+}
+
+
+
 
 .pair-assignments-header {
     display: inline-block;
