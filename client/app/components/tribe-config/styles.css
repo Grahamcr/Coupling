@@ -43,6 +43,69 @@
     text-align: left;
 }
 
+
+:local(.inputSection) {
+    text-align: left;
+    width: 100%;
+    clear: both;
+    height: 150px;
+}
+
+:local(.inputSectionLeft) {
+    float: left;
+    width: 35%;
+    margin-left: 15px;
+}
+
+:local(.inputSectionTitle) {
+    font-size: 30px;
+    margin-bottom: -15px;
+}
+
+:local(.inputSectionTitle) > span {
+    font-style: italic;
+}
+
+:local(.inputSectionInstrc) {
+    font-size: 14px;
+    color:#868686;
+}
+
+:local(.inputSectionRight) {
+    float: right;
+    width: 30%;
+    margin-right: 100px;
+    min-width: 200px;
+    position: relative;
+}
+
+:local(.inputSectionRight) > input {
+    width: 100%;
+    font-size: 22px;
+    line-height: 38px;
+    margin-top: 50px;
+    padding-left: 15px;
+    font-weight: 100;
+}
+
+:local(.inputSectionRight) > input[type='checkbox'] {
+    float:left;
+    text-align: left;
+    height: 40px;
+    width:40px;
+    position: relative;
+    top: -15px;
+    left: 0px;
+}
+
+:local(.inputSectionRight) > p {
+    font-size: 20px;
+    font-weight: 900;
+    margin-top: 40px;
+    margin-left: 40px;
+}
+
+
 :local(.className) {
     display: inline-block;
     background: hsla(45, 80%, 96%, 1);

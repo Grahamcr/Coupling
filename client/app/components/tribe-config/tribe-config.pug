@@ -8,6 +8,37 @@ div(ng-class="self.styles.content")
     div(ng-class="self.styles.sectionHeader")
         p CREATE A NEW TEAM
 
+    
+    div(ng-class="self.styles.inputSection")
+        div(ng-class="self.styles.inputSectionLeft")
+            p(ng-class="self.styles.inputSectionTitle") Team Name
+            p(ng-class="self.styles.inputSectionInstrc") This how you will reference this team both in the coupling application and in the URL that you can share with others
+            
+        div(ng-class="self.styles.inputSectionRight")
+            input(id="tribe-name" type="text" ng-model="self.tribe.name" placeholder="Enter the tribe name here")
+            
+            
+    div(ng-class="self.styles.inputSection")
+        div(ng-class="self.styles.inputSectionLeft")
+            p(ng-class="self.styles.inputSectionTitle") Email
+            p(ng-class="self.styles.inputSectionInstrc") The tribe email address - Attach a Gravatar to this to choose your tribe icon
+            
+        div(ng-class="self.styles.inputSectionRight")
+            input(id="tribe-email" type="text" ng-model="self.tribe.email" placeholder="Enter the tribe email here")
+            
+            
+    div(ng-class="self.styles.inputSection")
+        div(ng-class="self.styles.inputSectionLeft")
+            p(ng-class="self.styles.inputSectionTitle") Team Badging - 
+                span Optional
+            p(ng-class="self.styles.inputSectionInstrc") If you would like you can turn on Badging, which allows you to distinguish between team members and define how you would like to prioritize pairings made between them
+            
+        div(ng-class="self.styles.inputSectionRight")
+            input(id="badge-checkbox" type="checkbox" ng-model="self.tribe.badgesEnabled") 
+            p Enabled        
+            
+            
+        
 div(ng-class="self.styles.className" ng-show="self.tribe")
     div
         h1 Tribe Configuration
