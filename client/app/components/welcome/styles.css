@@ -1,125 +1,62 @@
-:local(.className) {
-    display: inline-block;
-    overflow: hidden;
+:local(.className) { /*header*/
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 60px;
+    background-color: rgba(174, 184, 0, 1);
+    text-align: left;
 }
 
-:local(.welcome) {
-    display: inline-block;
-    vertical-align: top;
-    border-radius: 82px;
-    padding: 0 42px 18px;
-    border: 24px solid darkorange;
-    background-color: #faf0d2;
-}
-
-:local(.welcomeTitle) {
-    margin-top: 0.5em;
-    margin-bottom: 0.4em;
-    font-size: 72px;
+:local(.welcome) {  /*header text*/
+    color: #FFF;
     font-weight: bold;
+    font-size: 24px;
+    margin-left: 10px;
+    margin-top: 10px;
 }
 
-:local(.welcome) playercard.left, .player.left {
-    position: relative;
-    transform: rotate(-8deg);
+:local(.welcomePair) { /*content*/
+    width: 100%;
+    margin-top: 60px;
 }
 
-:local(.welcome) playercard.right, .player.right {
-    position: relative;
-    transform: rotate(8deg);
+:local(.welcomeProverb) { /*action box*/
+    
+    width:500px;
+    border:5px solid #aeb800;
+    position: absolute;
+    left: 50%;
+    margin-left: -250px;
+    top:50%;
+    margin-top: -100px;
+    background-color: #FFF;
 }
 
-:local(.welcomePair) {
-    display: inline-flex;
+:local(.welcomeTitle) {  /*action box text/welcome message*/
+    text-align: center;
+    font-size: 32px;
+    font-weight: 900;
+    color: #aeb800;
+    margin-bottom: 25px;
 }
 
-:local(.welcomeProverb) {
+
+:local(.enterButtonContainer) { /*Sign in button container*/
+    background-color: rgba(25, 158, 216, 1);
+    padding: 15px 40px;
     display: inline-block;
-    border-radius: 15px;
-    transform: rotate(0deg);
-    padding: 4px;
-    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
-:local(.enterButtonContainer) {
-    padding-top: 35px;
-    padding-bottom: 50px;
-    display: inline-block;
+:local(.enterButton) {  /*Sign in button*/
+    color: #FFF;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    
 }
 
-:local(.enterButton) {
-}
 
-:local(.enterButtonContainer) {
-    animation: 2s pulsate;
-    animation-iteration-count: infinite;
-}
 
-:local(.enterButton) {
-    animation: 0.5s pulsate;
-    animation-iteration-count: infinite;
-    animation-play-state: paused;
-}
 
-:local(.enterButtonContainer):hover {
-    animation-play-state: paused;
-}
-
-:local(.enterButton):hover {
-    animation-play-state: running;
-}
-
-:local(.className).ng-hide {
-    opacity: 0;
-}
-
-:local(.className).ng-hide-remove {
-    transition: all ease-out 4s;
-    animation: 4s curious-tilt;
-    animation-iteration-count: 1;
-}
-
-:local(.welcome) playercard.left.ng-hide-remove, .player.left.ng-hide-remove {
-    transition: all ease-out 4s;
-    animation-duration: 4s;
-    animation-name: slide-up-left;
-    animation-iteration-count: 1;
-}
-
-:local(.welcome) playercard.left, .player.left {
-    transition: all ease-out 0.25s;
-}
-
-:local(.welcome) playercard.left:hover, .player.left:hover {
-    transition: all ease-in 0.4s;
-    z-index: 1;
-    transform: rotate(0deg) scale(1.5);
-}
-
-:local(.welcome) playercard.right.ng-hide-remove, .player.right.ng-hide-remove {
-    transition: all ease-out 5s;
-    animation-duration: 5s;
-    animation-name: slide-up-right;
-    animation-iteration-count: 1;
-}
-
-:local(.welcome) playercard.right, .player.right {
-    transition: all ease-out 0.25s;
-}
-
-:local(.welcome) playercard.right:hover, .player.right:hover {
-    transition: all ease-in 0.4s;
-    z-index: 1;
-    transform: rotate(0deg) scale(1.5);
-}
-
-:local(.welcomeProverb).ng-hide {
-    opacity: 0;
-}
-
-:local(.welcomeProverb).ng-hide-remove {
-    transition-delay: 5s;
-    transition-property: all;
-    transition-timing-function: ease-in;
-    transition-duration: 1s;
-}
