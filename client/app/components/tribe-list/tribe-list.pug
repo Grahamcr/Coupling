@@ -1,5 +1,9 @@
+div(ng-class="tribeList.styles.header")
+    img(ng-class="tribeList.styles.headerImage" ng-src="images/logo2.png")
+    p(ng-class="tribeList.styles.headerText") COUPLING
+
 div(ng-class="tribeList.styles.className")
     div(ng-show="tribeList.tribes")
         tribecard(ng-repeat='tribe in tribeList.tribes' tribe="tribe")
-    div
-        a(type="button" id="new-tribe-button" class="super green button" href="/new-tribe") Add a new tribe!
+    div(ng-class="tribeList.styles.btnContainer")
+        a(ng-class="tribeList.styles.addTribeBtn" type="button" id="new-tribe-button" href="/new-tribe") Create A New Team

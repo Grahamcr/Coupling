@@ -1,11 +1,45 @@
 :local(.className) {
-    display: inline-block;
-    border-radius: 82px;
-    border: 8px solid rgb(94, 84, 102);
-    background-color: hsla(0, 0%, 80%, 1);
-    padding: 0 42px 42px;
+
 }
 
-:local(.className) > div {
-    padding: 7px;
+:local(.header) { 
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 60px;
+    background-color: rgba(174, 184, 0, 1);
+    text-align: left;
+    z-index: 2;
+}
+
+:local(.headerText) {  
+    color: #FFF;
+    font-weight: bold;
+    font-size: 24px;
+    margin-left: 80px;
+    margin-top: -43px;
+}
+
+:local(.headerImage) {  
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+:local(.addTribeBtn) {
+    color: #FFF;
+    text-decoration: none;
+    font-weight: bold;
+    
+}
+
+
+:local(.btnContainer) {
+    background-color: rgba(25, 158, 216, 1);
+    padding: 15px 40px;
+    display: inline-block;
+    margin-bottom: 30px;
+    margin-top: 150px;
+    font-size: 24px;
 }
