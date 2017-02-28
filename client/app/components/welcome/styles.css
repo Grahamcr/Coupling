@@ -1,4 +1,4 @@
-:local(.className) { /*header*/
+:local(.header) { 
     position: absolute;
     top: 0px;
     left: 0px;
@@ -6,23 +6,30 @@
     height: 60px;
     background-color: rgba(174, 184, 0, 1);
     text-align: left;
+    z-index: 2;
 }
 
-:local(.welcome) {  /*header text*/
+:local(.headerText) {  
     color: #FFF;
     font-weight: bold;
     font-size: 24px;
-    margin-left: 10px;
-    margin-top: 10px;
+    margin-left: 80px;
+    margin-top: -43px;
 }
 
-:local(.welcomePair) { /*content*/
+:local(.headerImage) {  
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+:local(.content) {
     width: 100%;
     margin-top: 60px;
 }
 
-:local(.welcomeProverb) { /*action box*/
-    
+:local(.actionBox) {
+    z-index: 3;
     width:500px;
     border:5px solid #aeb800;
     position: absolute;
@@ -33,7 +40,7 @@
     background-color: #FFF;
 }
 
-:local(.welcomeTitle) {  /*action box text/welcome message*/
+:local(.welcomeTitle) {  
     text-align: center;
     font-size: 32px;
     font-weight: 900;
@@ -42,19 +49,54 @@
 }
 
 
-:local(.enterButtonContainer) { /*Sign in button container*/
+:local(.enterButtonContainer) { 
     background-color: rgba(25, 158, 216, 1);
     padding: 15px 40px;
     display: inline-block;
     margin-bottom: 30px;
 }
 
-:local(.enterButton) {  /*Sign in button*/
+:local(.enterButton) { 
     color: #FFF;
     text-decoration: none;
     font-size: 16px;
     font-weight: bold;
-    
+}
+
+:local(.overlay) {    
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 60px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+:local(.backgroundImageContainer) {   
+    position: absolute;
+    top: 60px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+:local(.imageLeft) {   
+    width: 50%;
+    float: left;
+    border-right: 3px solid #aeb800;
+    height: 100%;
+}
+:local(.imageRight) {   
+    width: 50%;
+    height: 100%;
 }
 
 

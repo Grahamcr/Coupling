@@ -1,23 +1,17 @@
-div(ng-class="welcome.styles.className")
-    p(ng-class="welcome.styles.welcome") COUPLING
+div(ng-class="welcome.styles.header")
+    img(ng-class="welcome.styles.headerImage" ng-src="images/logo2.png")
+    p(ng-class="welcome.styles.headerText") COUPLING
     
-div(ng-class="welcome.styles.welcomePair")
-    div(ng-class="welcome.styles.welcomeProverb")
+div(ng-class="welcome.styles.content")
+    div(ng-class="welcome.styles.actionBox")
         p(ng-class="welcome.styles.welcomeTitle") WELCOME TO COUPLING
         div
             div(ng-class="welcome.styles.enterButtonContainer")
                 a(ng-class="welcome.styles.enterButton" href="/auth/google" target='_self' class="") Start Coupling With Your Team
                 
+    div(ng-class="welcome.styles.backgroundImageContainer")
+        div(ng-class="welcome.styles.imageLeft")
+            img(ng-src="/images/sidebysideImages/cat.png")
+        div(ng-class="welcome.styles.imageRight")
+            img(ng-src="client/images/sidebysideImages/potato.png")
     div(ng-class="welcome.styles.overlay")
-
-
-
-
-
-
-
-
-
-
-
-
