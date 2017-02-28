@@ -7,6 +7,8 @@ tabindex="0"
 ng-style="tribecard.cardStyle"
 )
     div(ng-style="tribecard.headerStyle")
+        img(ng-src="{{tribecard.tribe | tribeImageUrl: {size: tribecard.size} }}" width="{{tribecard.size}}" height="{{tribecard.size}}")
+        
         div(ng-class="tribecard.styles.header" ng-click="tribecard.clickOnTribeName($event)")
             text(
             data-fittext=1
@@ -15,4 +17,4 @@ ng-style="tribecard.cardStyle"
             data-fittext-load-delay="100"
             ng-model="tribecard.tribe.name"
             ) {{tribecard.tribe.name || 'Unknown'}}
-    img(ng-src="{{tribecard.tribe | tribeImageUrl: {size: tribecard.size} }}" width="{{tribecard.size}}" height="{{tribecard.size}}")
+    

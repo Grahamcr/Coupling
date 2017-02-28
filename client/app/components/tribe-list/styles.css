@@ -1,5 +1,11 @@
 :local(.className) {
     margin-top: 140px;
+    text-align: left;
+    display: block;
+    width:95%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1600px;
 }
 
 :local(.header) { 
@@ -31,27 +37,38 @@
     color: #FFF;
     text-decoration: none;
     font-weight: bold;
-    
+    display: inline-block;
+    text-align: center;
+}
+
+:local(.addContainer) {
+    background-color: #199ed8;
+    display: inline-block;
+    text-align: center;
+    padding: 10px 20px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -70px;
 }
 
 :local(.plusBtn) {
-    width: 80px;
+    width: 40px;
     display: inline-block;
-    margin-bottom: 80px;
-    position: relative;
-    left: 155px;
+    padding: 0px 10px;
 }
 
 :local(.btnContainer) > a {
-    display: block;
-    color: #199ed8;
+    display: inline-block;
+    color: #FFF;
+    position: relative;
+    top: -13px;
 }
 
 :local(.btnContainer) {
-    
     display: inline-block;
     margin-bottom: 0px;
-    margin-top: 100px;
-    font-size: 24px;
+    font-size: 16px;
     font-weight: 900;
 }
+
