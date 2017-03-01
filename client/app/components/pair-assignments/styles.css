@@ -34,6 +34,23 @@
     margin-bottom: 500px;
 }
 
+:local(.button) {
+    background-color: #199ed8;
+    padding: 10px 20px;
+    width: 150px;
+    color: #FFF;
+    text-align: center;
+    margin: 5px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+:local(.button) > a {
+    text-decoration: none;
+    color: #FFF;
+    font-weight: 900;
+    font-size: 16px;
+}
 
 :local(.noPairsNotice) > img {
     width: 100px;

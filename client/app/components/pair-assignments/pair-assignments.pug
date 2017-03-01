@@ -11,7 +11,8 @@ div(ng-class="pairAssignments.styles.className")
                 img(ng-src="/images/catcus.png")
                 p(ng-class="pairAssignments.styles.noPairsTitle") Looks a bit emtpy.... 
                 p(ng-class="pairAssignments.styles.noPairsSubtitle") Let's Couple Those Pairs!
-                
+                div(ng-class="pairAssignments.styles.button")
+                    a(href="/{{tribebrowser.tribe.id}}/statistics") Add Team Member
                 
             div(ng-show="pairAssignments.pairAssignments")
                 div(class="pair-assignments-header")
@@ -29,7 +30,7 @@ div(ng-class="pairAssignments.styles.className")
             div(ng-show="pairAssignments.pairAssignments")
                 a(id="save-button" class="super green button" ng-click="pairAssignments.save()" ng-show="pairAssignments.isNew") Save!
             a(id="new-pairs-button" class="large pink button" href="/{{pairAssignments.tribe.id}}/prepare/") Prepare to spin!
-            a(id="view-history-button" class="large blue button" href="/{{pairAssignments.tribe.id}}/history/") View history!
+           
     player-roster(
     ng-class="pairAssignments.styles.unpairedPlayerRoster"
     players="pairAssignments.unpairedPlayers"
