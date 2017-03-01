@@ -12,6 +12,7 @@ div(ng-class="pairAssignments.styles.className")
                 p(ng-class="pairAssignments.styles.noPairsTitle") Looks a bit emtpy.... 
                 p(ng-class="pairAssignments.styles.noPairsSubtitle") Let's Couple Those Pairs!
                 
+                
             div(ng-show="pairAssignments.pairAssignments")
                 div(class="pair-assignments-header")
                     text Couples for {{pairAssignments.pairAssignments.date | date:'MM/dd/yyyy'}} - {{pairAssignments.pairAssignments.date | date: 'HH:mm:ss'}}

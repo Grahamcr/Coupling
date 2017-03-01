@@ -1,11 +1,21 @@
 div(ng-class="tribebrowser.styles.className")
-    span
-        tribecard(tribe="tribebrowser.tribe" size="50")
-        h1 {{tribebrowser.tribe.name}}
-    span
-        span
-            a(ng-class="tribebrowser.styles.statisticsButton" class="large gray button" href="/{{tribebrowser.tribe.id}}/statistics")
-                text(class="icon-button-text") Statistics
-            a(id="tribe-select-button" class="large gray button" href="/tribes")
-                i(class="fa fa-arrow-circle-up")
-                text(class="icon-button-text") Tribe select
+    div(ng-class="tribebrowser.styles.breadcrums")
+        a(href="/tribes") Team List Page
+        p > 
+        a(href="") {{tribebrowser.tribe.name}}
+        p > 
+        a Home
+
+    div(ng-class="tribebrowser.styles.sectionHeader")
+        div(ng-class="tribebrowser.styles.gravatar")
+            tribecard(tribe="tribebrowser.tribe" size="50")
+        p {{tribebrowser.tribe.name}}   
+        
+        div(ng-class="tribebrowser.styles.pullRight")
+            div(ng-class="tribebrowser.styles.button")
+                a(href="/{{tribebrowser.tribe.id}}/statistics") Team Stats
+            
+            div(ng-class="tribebrowser.styles.button")
+                 a(href="/{{pairAssignments.tribe.id}}/history/") History
+            
+            

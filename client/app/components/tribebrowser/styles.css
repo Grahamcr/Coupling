@@ -1,24 +1,68 @@
 :local(.className) {
-    white-space: normal;
-    display: block;
-    margin: 5px;
     text-align: left;
+}
+
+:local(.breadcrums) > a {
+    float:left;
+    display: block;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+}
+:local(.breadcrums) > p {
+    float:left;
+    font-size: 18px;
+    font-weight: 900;
+    margin-top: -1px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 :local(.className) tribecard {
     display: inline-block;
 }
 
-:local(.className) > * > * {
-    vertical-align: middle;
+:local(.gravatar) {
+    float:left;
+    margin-right: 20px;
 }
 
-:local(.className) > * > h1 {
-    display: inline-block;
-    margin: 0 20px;
-    text-decoration: underline;
+:local(.sectionHeader) {  
+    clear: both;
+    width:100%;
+    border-bottom: solid 2px #aeb800;
+    margin-bottom: 30px;
+    position: relative;
+    top: 20px;
 }
 
-:local(.statisticsButton) {
+:local(.sectionHeader) > p{  
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 0px;
+    text-align: left;
+}
 
+:local(.pullRight) {
+    float:right;
+}
+
+:local(.button) {
+    background-color: #199ed8;
+    padding: 10px 20px;
+    width: 100px;
+    color: #FFF;
+    text-align: center;
+    float: left;
+    margin: 5px;
+    position: relative;
+    top: -55px;
+    border-radius: 3px;
+}
+
+:local(.button) > a {
+    text-decoration: none;
+    color: #FFF;
+    font-weight: 900;
+    font-size: 16px;
 }
